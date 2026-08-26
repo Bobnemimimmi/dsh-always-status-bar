@@ -17,6 +17,15 @@
 ### 安装
 
 ```sh
+dsh plugin --profile web add dsh-always-status-bar
+```
+
+npm 安装拿到的是发布时构建好的成品，无需任何构建授权。
+
+从 GitHub 安装（会运行本包的 `prepare` 自构建；pnpm ≥10 首次 `add` 会拒绝并要求授权，
+按提示把打印的 `allowBuilds` 键加入 profile 的 `pnpm-workspace.yaml` 后重跑）：
+
+```sh
 dsh plugin --profile web add github:Bobnemimimmi/dsh-always-status-bar
 ```
 
@@ -25,10 +34,6 @@ dsh plugin --profile web add github:Bobnemimimmi/dsh-always-status-bar
 ```sh
 dsh plugin --profile web add ./dsh-always-status-bar
 ```
-
-git 安装会由 pnpm 运行本包的 `prepare` 自构建；pnpm ≥10 首次 `add` 会拒绝并要求授权，
-按提示把 `allowBuilds: dsh-always-status-bar: true` 加入 profile 的 `pnpm-workspace.yaml`
-后重跑即可。本地目录与 tarball 安装无需任何构建。
 
 重启 `dsh web` 即生效。
 

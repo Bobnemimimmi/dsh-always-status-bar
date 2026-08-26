@@ -33,6 +33,9 @@
     "lib/client.js",
     "cordis.patch.yml"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"
@@ -44,6 +47,7 @@
   "scripts": {
     "build": "node build.mjs",
     "prepare": "node build.mjs",
+    "prepack": "node build.mjs",
     "typecheck": "tsc -p tsconfig.json",
     "test": "node build.mjs && vitest run"
   },
