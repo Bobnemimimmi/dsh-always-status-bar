@@ -1,7 +1,7 @@
 {
-  "name": "dsh-always-timestamp",
+  "name": "dsh-always-status-bar",
   "version": "0.1.0",
-  "description": "DSH Web UI plugin: keep the native per-message timestamp (date | time) always visible without hovering",
+  "description": "DSH Web UI plugin: keep the native per-message status line (date | time, run duration, TTFT, tokens/s) always visible without hovering",
   "type": "module",
   "main": "lib/index.js",
   "exports": {

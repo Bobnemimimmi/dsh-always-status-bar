@@ -1,0 +1,27 @@
+/*
+ * dsh-always-status-bar override.
+ *
+ * DSH renders every message's native status line — the user side
+ * (`clock="start"`, CSS module class `timeStart`) and the assistant side
+ * (`clock="end"`, class `timeEnd`) — inside a `data-time-hover-root` scope.
+ * That single span carries the date | time and, for assistant messages, the
+ * run-time readings (用时 / 首 token / tok/s). DSH hides the whole span with
+ * `opacity: 0` inside `@media (hover: hover)`, revealing it on
+ * `:hover` / `:focus-within` (ui-conversation `MessageIconActions.module.css`).
+ * The span is always present in the DOM — only its opacity changes — so the
+ * entire feature is this one rule: keep it at full opacity.
+ *
+ * - `data-time-hover-root` is the stable semantic anchor DSH's own tests use.
+ * - The CSS-module classes are hashed at build time (`[hash]_timeStart` /
+ *   `[hash]_timeEnd`), but the local names are preserved, so the substring
+ *   attribute selectors find exactly the status span — never the action
+ *   buttons (copy / branch / third-party) that share the same row.
+ * - `!important` keeps the override above the native normal declaration
+ *   regardless of stylesheet order (plugin bundles materialize concurrently,
+ *   so order is not under this plugin's control).
+ * - No other property changes: font, color, date/time format, spacing,
+ *   alignment, and every action-button behavior stay native.
+ */
+[data-time-hover-root] :is([class*="timeStart"], [class*="timeEnd"]) {
+  opacity: 1 !important;
+}

@@ -1,4 +1,4 @@
-# dsh-always-timestamp
+# dsh-always-status-bar
 
 ## 1. 项目目标
 
@@ -6,7 +6,11 @@
 
 插件名称：
 
-`dsh-always-timestamp`
+`dsh-always-status-bar`
+
+> 命名说明：DSH 原生将消息状态栏（用户侧的 `日期 | 时间`，Assistant 侧的
+> `日期 | 时间 · 用时 · 首 token · tok/s`）渲染在同一个 span 内，插件揭示的是
+> 这一整条原生状态栏，故以「status bar」命名；时间戳是其中最核心的组成。
 
 核心原则：
 
@@ -309,7 +313,7 @@ Agent 首先检查当前 DSH 源码，准确定位：
 
 ### G. 卸载
 
-卸载 `dsh-always-timestamp` 并重新运行 DSH：
+卸载 `dsh-always-status-bar` 并重新运行 DSH：
 
 **预期：** DSH 完全恢复原生 Hover 才显示时间戳的行为。
 

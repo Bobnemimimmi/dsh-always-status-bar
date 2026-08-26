@@ -38,7 +38,7 @@ interface LoadResult {
 }
 
 const styleTags = (): NodeListOf<HTMLStyleElement> =>
-  document.querySelectorAll('style[data-plugin="dsh-always-timestamp"]')
+  document.querySelectorAll('style[data-plugin="dsh-always-status-bar"]')
 
 function loadBundleInWindow(): LoadResult {
   const handoffs: Handoff[] = []
@@ -70,12 +70,12 @@ describe('built client bundle', () => {
   it('registers exactly one module-loader handoff under the package id', () => {
     const { handoffs } = loadBundleInWindow()
     expect(handoffs).toHaveLength(1)
-    expect(handoffs[0]!.id).toBe('dsh-always-timestamp')
+    expect(handoffs[0]!.id).toBe('dsh-always-status-bar')
   })
 
   it('materializes the cordis plugin shape with zero require edges', () => {
     const { plugin } = loadBundleInWindow()
-    expect(plugin.name).toBe('dsh-always-timestamp')
+    expect(plugin.name).toBe('dsh-always-status-bar')
     expect(typeof plugin.apply).toBe('function')
   })
 
@@ -84,7 +84,7 @@ describe('built client bundle', () => {
     ;(plugin.apply as (ctx: FakeContext) => void)(ctx)
     const tags = styleTags()
     expect(tags).toHaveLength(1)
-    expect(tags[0]!.getAttribute('data-plugin-css')).toBe('dsh-always-timestamp/always-timestamp.css')
+    expect(tags[0]!.getAttribute('data-plugin-css')).toBe('dsh-always-status-bar/always-status-bar.css')
     expect(tags[0]!.textContent).toContain('[data-time-hover-root]')
     expect(tags[0]!.textContent).toContain('opacity: 1 !important')
   })
@@ -93,7 +93,7 @@ describe('built client bundle', () => {
     const { plugin, ctx, disposers } = loadBundleInWindow()
     ;(plugin.apply as (ctx: FakeContext) => void)(ctx)
     expect(disposers).toHaveLength(1)
-    expect(disposers[0]!.label).toBe('dsh-always-timestamp: always-visible timestamp style')
+    expect(disposers[0]!.label).toBe('dsh-always-status-bar: always-visible status bar style')
     disposers[0]!.run()
     expect(styleTags()).toHaveLength(0)
   })

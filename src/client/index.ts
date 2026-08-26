@@ -1,11 +1,11 @@
 /**
- * dsh-always-timestamp — Browser half (the `./client` bundle).
+ * dsh-always-status-bar — Browser half (the `./client` bundle).
  *
  * Classic-script bundle: registers a lazy factory with
  * `window.__ModuleLoader__` (the DSH client module system). The factory
  * returns the Cordis plugin shape the boot Loader imports; `apply` injects
  * one `<style data-plugin>` tag whose single rule keeps the native message
- * clock labels visible.
+ * status line visible.
  *
  * Facts located in the current DSH checkout this plugin targets:
  * - User messages: `packages/client/ui-conversation/src/client/chat/
@@ -23,9 +23,9 @@
  *   `cssModules.pattern = '[hash]_[local]'`, so the built class names
  *   preserve the local names (`[hash]_timeStart` / `[hash]_timeEnd`); the
  *   override targets the stable `data-time-hover-root` anchor plus those
- *   preserved class substrings (see `always-timestamp.css`).
+ *   preserved class substrings (see `always-status-bar.css`).
  */
-import css from './always-timestamp.css'
+import css from './always-status-bar.css'
 
 // The bundle is a classic script wrapped by build.mjs in the same handoff
 // shape as DSH's own client bundles: `var module = { exports: {} }` is
@@ -35,13 +35,13 @@ import css from './always-timestamp.css'
 declare const module: { exports: { name: string; apply: typeof apply } }
 
 /** Cordis plugin name; must equal the package name (the graph row id). */
-const name = 'dsh-always-timestamp'
+const name = 'dsh-always-status-bar'
 
 /** Stable style tag id, mirroring the native `data-plugin-css` naming (`<id>/<file>`). */
-const STYLE_TAG_ID = 'dsh-always-timestamp/always-timestamp.css'
+const STYLE_TAG_ID = 'dsh-always-status-bar/always-status-bar.css'
 
 /** Minimal structural view of the Cordis context this plugin uses. */
-interface TimestampPluginContext {
+interface StatusBarPluginContext {
   effect(execute: () => () => void, label: string): unknown
 }
 
@@ -53,7 +53,7 @@ interface TimestampPluginContext {
  * `data-plugin-css` uniqueness guard).
  * @param ctx - the client plugin context.
  */
-function apply(ctx: TimestampPluginContext): void {
+function apply(ctx: StatusBarPluginContext): void {
   const existing = document.querySelector<HTMLStyleElement>(`style[data-plugin-css=${JSON.stringify(STYLE_TAG_ID)}]`)
   const style: HTMLStyleElement = existing ?? document.createElement('style')
   if (existing === null) {
@@ -64,7 +64,7 @@ function apply(ctx: TimestampPluginContext): void {
   }
   ctx.effect(() => () => {
     style.remove()
-  }, `${name}: always-visible timestamp style`)
+  }, `${name}: always-visible status bar style`)
 }
 
 module.exports = { name, apply }

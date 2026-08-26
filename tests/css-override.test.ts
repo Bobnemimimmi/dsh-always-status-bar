@@ -10,7 +10,7 @@
 import { readFileSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 
-const css = readFileSync(new URL('../src/client/always-timestamp.css', import.meta.url), 'utf8')
+const css = readFileSync(new URL('../src/client/always-status-bar.css', import.meta.url), 'utf8')
 
 /** Comment-free, trimmed sheet body. */
 const body = css.replace(/\/\*[\s\S]*?\*\//g, '').trim()
@@ -32,7 +32,7 @@ function parseRules(sheet: string): Array<{ selector: string; declarations: stri
     })
 }
 
-describe('always-timestamp.css override contract', () => {
+describe('always-status-bar.css override contract', () => {
   const rules = parseRules(body)
 
   it('is exactly one rule', () => {
