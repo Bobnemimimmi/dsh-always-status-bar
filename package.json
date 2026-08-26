@@ -1,6 +1,6 @@
 {
   "name": "dsh-always-status-bar",
-  "version": "0.1.1",
+  "version": "0.1.0",
   "description": "DSH Web UI plugin: keep the native per-message status line (date | time, run duration, TTFT, tokens/s) always visible without hovering",
   "keywords": [
     "dsh",
