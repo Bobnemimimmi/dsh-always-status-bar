@@ -18,9 +18,9 @@ const pkg = JSON.parse(readFileSync(new URL('package.json', root), 'utf8')) as R
 const patch = readFileSync(new URL('cordis.patch.yml', root), 'utf8')
 
 describe('package manifest', () => {
-  it('is version 0.1.0 under the spec name', () => {
+  it('is version 0.1.1 under the plugin name', () => {
     expect(pkg.name).toBe('dsh-always-status-bar')
-    expect(pkg.version).toBe('0.1.0')
+    expect(pkg.version).toBe('0.1.1')
   })
 
   it('declares the bundle patch and the web client manifest', () => {

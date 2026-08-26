@@ -19,7 +19,7 @@ scoped CSS 覆盖将其常驻显示：复用原生渲染与原生位置，日期
 ### 安装
 
 ```sh
-dsh plugin --profile web add github:Bobnemimimmi/dsh-always-status-bar#v0.1.0
+dsh plugin --profile web add github:Bobnemimimmi/dsh-always-status-bar
 ```
 
 本地目录 / tarball 安装：
