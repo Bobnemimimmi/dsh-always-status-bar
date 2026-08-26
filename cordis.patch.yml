@@ -1,0 +1,15 @@
+# dsh-always-timestamp bundle layer: exactly one plugin row.
+#
+# The package is dual-face:
+# - The node half (package root, `lib/index.js`) is a no-op Cordis plugin that
+#   keeps the Loader row active. The client-modules node half only scans
+#   loader entries, so the row must import and activate.
+# - The `dsh.client` declaration in package.json makes that scan serve the
+#   browser bundle at `/plugins/dsh-always-timestamp/client.js` and roster it
+#   in the `window.__DSH_BOOT__` graph. The browser half injects the CSS.
+#
+# The row id is unique to this plugin and overrides nothing from earlier
+# layers (dsh-base / dsh-web-app).
+- insert:
+    - id: dsh-always-timestamp
+      name: dsh-always-timestamp

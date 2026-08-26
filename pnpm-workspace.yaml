@@ -1,0 +1,5 @@
+# pnpm 11 project settings. esbuild's postinstall installs its platform
+# binary; approving it keeps installs clean (the generated placeholder said
+# "set this to true or false").
+allowBuilds:
+  esbuild: true
