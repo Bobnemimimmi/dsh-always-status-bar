@@ -1,2 +1,5 @@
 node_modules/
 *.tsbuildinfo
+
+# Local working spec — deliberately not published to the repository.
+/SPEC.md
