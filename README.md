@@ -16,26 +16,28 @@
 
 ### 安装
 
-```sh
-dsh plugin --profile web add dsh-always-status-bar
-```
+- 通过 npm 安装
+  ```sh
+  dsh plugin --profile web add dsh-always-status-bar
+  ```
 
-npm 安装拿到的是发布时构建好的成品，无需任何构建授权。
+  npm 安装拿到的是发布时构建好的成品，无需任何构建授权。
 
-从 GitHub 安装（会运行本包的 `prepare` 自构建；pnpm ≥10 首次 `add` 会拒绝并要求授权，
-按提示把打印的 `allowBuilds` 键加入 profile 的 `pnpm-workspace.yaml` 后重跑）：
+- 从 GitHub 安装（会运行本包的 `prepare` 自构建；pnpm ≥10 首次 `add` 会拒绝并要求授权，按提示把打印的 `allowBuilds` 键加入 profile 的 `pnpm-workspace.yaml` 后重跑）：
 
-```sh
-dsh plugin --profile web add github:Bobnemimimmi/dsh-always-status-bar
-```
+  ```sh
+  dsh plugin --profile web add github:Bobnemimimmi/dsh-always-status-bar
+  ```
 
-本地目录 / tarball 安装：
+- 本地目录 / tarball 安装：
 
-```sh
-dsh plugin --profile web add ./dsh-always-status-bar
-```
+  ```sh
+  dsh plugin --profile web add ./dsh-always-status-bar
+  ```
+  
+  重启 `dsh web` 即生效。
 
-重启 `dsh web` 即生效。
+- 或可通过[Awesome DeepSeek Harness (DSH) Plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin)搜索安装
 
 ### 卸载
 
